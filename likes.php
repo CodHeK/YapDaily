@@ -14,13 +14,6 @@
         header("Refresh: 1; url=login.php"); 
         exit();
     }
-    elseif ($user_id != $id) {
-        echo '<script language="javascript">';
-        echo 'alert("You are not allowed to access this")';
-        echo '</script>';   
-        header("Refresh: 1; url=profile.php"); 
-        exit();
-    }
     else {
         $name = $_SESSION['user'];
         //$_SESSION['liker'] = $idpass;
@@ -61,13 +54,6 @@
               echo '$sql . "<br>" . $e->getMessage();';
               echo '</script>';   
               header("Refresh: 1; url=welcome.php");
-        }
-      if ($query['user'] != $id) {
-            echo '<script language="javascript">';
-            echo 'alert("You are not allowed to access this")';
-            echo '</script>';   
-            header("Refresh: 1; url=profile.php"); 
-            exit();
         }
 
         $conn = NULL;
