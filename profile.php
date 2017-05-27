@@ -23,12 +23,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link href="https://fonts.googleapis.com/css?family=Changa:200|Source+Sans+Pro:200" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
   <style type="text/css">
     body {
       font-family: 'Source Sans Pro', sans-serif;
       font-weight: 700;
     }
-    .cont {
+    #cont {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
   </style>
@@ -88,7 +89,8 @@
                 foreach($results as $rows) {
                   echo '<br>';
                   echo '<div class="container">';
-                  echo '<div class="cont" style="border:1px solid black;border-radius:10px;">';
+                  echo '<div id="cont" style="border:1px solid black;border-radius:10px;">';
+                  echo '<a href="postdelete.php?id=' .$rows['id']. '&user=' .$rows['user']. '" id="cross" style="text-decoration:none;color:#c0c0c0;float:right;font-size:20px;margin-right:1%;"><i class="fa fa-times" aria-hidden="true"></i></a>';
                   echo '<h3 style="font-family: Source Sans Pro;font-weight: 700;color: black;margin-left:2%;font-size:30px;">', $rows['title'], '</h3>';
                   echo '<hr style="margin-left:2%;width:93%;border:0.5px solid black;">';
                   echo '<h4 style = "font-family: Source Sans Pro;color: black;margin-left:2%;">By,  <b> &nbsp',$rows['name'],'&nbsp</b> on  <b>&nbsp',$rows['dater'], '&nbsp</b></h4>', '<br>';

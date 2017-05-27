@@ -1,2 +1,2 @@
-# YapDaily
-Simple Blogger, Add Posts and let everyone see it !
+# PDO_php
+Simple Login/Sign up using PDO php
