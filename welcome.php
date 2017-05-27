@@ -90,7 +90,7 @@
                   echo '<h3 style="font-family: Source Sans Pro;font-weight: 700;color: black;margin-left:2%;font-size:30px;">', $rows['title'], '</h3>';
                   echo '<hr style="margin-left:2%;width:93%;border:0.5px solid black;">';
                   echo '<h4 style = "font-family: Source Sans Pro;color: black;margin-left:2%;">By,  <b> &nbsp',$rows['name'],'&nbsp</b> on  <b>&nbsp',$rows['dater'], '&nbsp</b></h4>', '<br>';
-                  echo '<p class="jumbotron" style="font-family: Source Sans Pro;color:black;width:92%;margin-left:2%;font-size:25px;">',$rows['body'],'</p>';
+                  echo '<p class="jumbotron" style="font-family: Source Sans Pro;color:black;width:92%;margin-left:2%;font-size:25px;overflow-x:auto;overflow-y:auto;">',$rows['body'],'</p>';
                   echo '</div>';
                   echo '</div>';
                   echo '<br>';

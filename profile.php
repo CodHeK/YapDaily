@@ -91,10 +91,10 @@
                   echo '<div class="container">';
                   echo '<div id="cont" style="border:1px solid black;border-radius:10px;">';
                   echo '<a href="postdelete.php?id=' .$rows['id']. '&user=' .$rows['user']. '" id="cross" style="text-decoration:none;color:#c0c0c0;float:right;font-size:20px;margin-right:1%;"><i class="fa fa-times" aria-hidden="true"></i></a>';
-                  echo '<h3 style="font-family: Source Sans Pro;font-weight: 700;color: black;margin-left:2%;font-size:30px;">', $rows['title'], '</h3>';
+                  echo '<h3 style="font-family: Source Sans Pro;font-weight: 700;color: black;margin-left:2%;font-size:30px;">', $rows['title'], '&nbsp&nbsp&nbsp&nbsp<a href="postedit.php?id=' .$rows['id']. '&user=' .$rows['user']. '" style="text-decoration:none;color:black;font-size:20px;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></h3>';
                   echo '<hr style="margin-left:2%;width:93%;border:0.5px solid black;">';
                   echo '<h4 style = "font-family: Source Sans Pro;color: black;margin-left:2%;">By,  <b> &nbsp',$rows['name'],'&nbsp</b> on  <b>&nbsp',$rows['dater'], '&nbsp</b></h4>', '<br>';
-                  echo '<p class="jumbotron" style="font-family: Source Sans Pro;color:black;width:92%;margin-left:2%;font-size:25px;">',$rows['body'],'</p>';
+                  echo '<p class="jumbotron" style="font-family: Source Sans Pro;color:black;width:92%;margin-left:2%;font-size:25px;overflow-x:auto;overflow-y:auto;">',$rows['body'],'</p>';
                   echo '</div>';
                   echo '</div>';
                   echo '<br>';
