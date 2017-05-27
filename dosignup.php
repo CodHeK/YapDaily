@@ -11,7 +11,7 @@
 			header("Refresh: 1; url=index.php");
 		}
 
-		else {
+	else {
 			if(!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password'])) {
 					$name = htmlentities($_POST['name']);
 					$email = htmlentities($_POST['email']);
