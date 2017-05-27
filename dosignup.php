@@ -42,9 +42,21 @@
 
 			$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+			$stmt1 = $conn->prepare('SELECT * FROM userDetails WHERE name = :name');
+
+			$stmt1->execute(['name' => $name]);
+
+			$user1 = $stmt1->fetch(PDO::FETCH_ASSOC);
+
 			if($user != NULL) {
 				echo '<script language="javascript">';
-				echo 'alert("Email Already Registered !");';
+				echo 'alert("Email Already Registered ");';
+				echo '</script>';
+				header("Refresh: 1; url=index.php");
+			}
+			elseif($user1 != NULL) {
+				echo '<script language="javascript">';
+				echo 'alert("Username Already Exists !");';
 				echo '</script>';
 				header("Refresh: 1; url=index.php");
 			}

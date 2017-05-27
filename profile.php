@@ -1,6 +1,6 @@
-<?php
-	
+<?php 
 	session_start();
+
 	if(!isset($_SESSION['user'])) {
 		echo '<script language="javascript">';
 				echo 'alert("First Login!");';
@@ -12,15 +12,15 @@
 		$id = $_SESSION['id'];
 		$name = $_SESSION['user'];
 	}
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Welcome</title>
+	<title>MyProfile</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="refresh" content="60" > 
   <link href="https://fonts.googleapis.com/css?family=Changa:200|Source+Sans+Pro:200" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <style type="text/css">
@@ -51,14 +51,16 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php">LOG OUT</a></li>
+        <li><a href="welcome.php">ALL POSTS</a></li>
         <li><a href="addpost.php">ADD POST</a></li>
         <li style="color: black;font-weight: 700;border: 1px solid black;"><a href="profile.php"><?php echo $name ?></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<div id="content" class="container">
-    <h1>All Posts <b style="font-size:13px;">( Refreshed every minute )</b></h1>
+
+<div id="content1" class="container">
+    <h1>Post's Added by you</h1>
     <hr>
     <br>
     <?php 
@@ -74,7 +76,7 @@
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $conn->prepare("SELECT * FROM $tbname ORDER BY id DESC");
+            $stmt = $conn->prepare("SELECT * FROM $tbname WHERE name = '$name' ORDER BY id DESC");
 
             $stmt->execute();
 
@@ -98,7 +100,7 @@
             }
             else {
               echo '<br>';
-              echo '<h3 style="font-weight:700;font-family:Source Sans Pro;text-align:center;">No posts yet ! Be the first one to post!</h3>';
+              echo '<h3 style="font-weight:700;font-family:Source Sans Pro;text-align:center;">No posts added by you yet !</h3>';
             }
         }
         catch(PDOException $e){
@@ -111,6 +113,5 @@
         $conn = null;
 
     ?>
-</div>
 </body>
 </html>
