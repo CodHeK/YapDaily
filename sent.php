@@ -9,7 +9,7 @@
 		exit();
 	}
 	else {
-		$id = $_SESSION['id'];
+		$sendname = $_SESSION['tomsg'];
     //echo $id;
 		$name = $_SESSION['user'];
 	}
@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Welcome</title>
+	<title>Sent Messages</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="refresh" content="60" > 
@@ -61,7 +61,7 @@
   </div><!-- /.container-fluid -->
 </nav>
 <div id="content" class="container">
-    <h1>All Posts <b style="font-size:13px;">( Refreshed every minute )</b></h1>
+    <h1>Sent Messages</h1>
     <hr>
     <br>
     <?php 
@@ -69,7 +69,7 @@
         $username = "root";
         $password = "";
         $dbname = "pdologin";
-        $tbname = "posts";
+        $tbname = "messages";
 
         try {
 
@@ -77,7 +77,7 @@
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $conn->prepare("SELECT * FROM $tbname ORDER BY id DESC");
+            $stmt = $conn->prepare("SELECT * FROM $tbname WHERE frommsg = '$name' ORDER BY id DESC");
 
             $stmt->execute();
 
@@ -90,11 +90,10 @@
                   echo '<br>';
                   echo '<div class="container">';
                   echo '<div class="cont" style="border:1px solid black;border-radius:10px;">';
-                  echo '<h3 style="font-family: Source Sans Pro;font-weight: 700;color: black;margin-left:2%;font-size:30px;">', $rows['title'], '</h3>';
+                  echo '<h3 style="font-family: Source Sans Pro;font-weight: 700;color: black;margin-left:2%;font-size:30px;">To:&nbsp&nbsp', $rows['tomsg'], '</h3>';
                   echo '<hr style="margin-left:2%;width:93%;border:0.5px solid black;">';
-                  echo '<h4 style = "font-family: Source Sans Pro;color: black;margin-left:2%;">By,  <a style="text-decoration:none;" href="message.php?user=' .$rows['user']. '&sendto=' .$rows['name']. '"><b> &nbsp',$rows['name'],'&nbsp</b></a> on  <b>&nbsp',$rows['dater'], '&nbsp</b></h4>', '<br>';
-                  echo '<p class="jumbotron" style="font-family: Source Sans Pro;color:black;width:92%;margin-left:2%;font-size:25px;overflow-x:auto;overflow-y:auto;">',$rows['body'],'</p>';
-                  echo '<a id="heart" href="likes.php?id=' .$rows['id']. '&user=' .$rows['user']. '" style="text-decoration:none;font-size:25px;color:black;margin-left:2.5%;"><i class="fa fa-heart" aria-hidden="true"></i></a>&nbsp&nbsp&nbsp&nbsp<b style="font-size:20px;">', $rows['likes'], '</b><br>';
+                  echo '<p class="jumbotron" style="font-family: Source Sans Pro;color:black;width:92%;margin-left:2%;font-size:25px;overflow-x:auto;overflow-y:auto;">',$rows['msgbody'],'</p>';
+                  // echo '<a href="message.php?user=' .$rows['frommsg']. '&sendto=' .$rows['tomsg']. '" class="btn btn-default" style="text-decoration:none;margin-left:2%;">REPLY</a>';
                   echo '</div>';
                   echo '</div>';
                   echo '<br>';
@@ -102,7 +101,7 @@
             }
             else {
               echo '<br>';
-              echo '<h3 style="font-weight:700;font-family:Source Sans Pro;text-align:center;">No posts yet ! Be the first one to post!</h3>';
+              echo '<h3 style="font-weight:700;font-family:Source Sans Pro;text-align:center;">No messages sent  yet !</h3>';
             }
         }
         catch(PDOException $e){
