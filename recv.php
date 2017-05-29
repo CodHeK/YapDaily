@@ -9,7 +9,7 @@
 		exit();
 	}
 	else {
-		$sendname = $_SESSION['tomsg'];
+		//$sendname = $_SESSION['tomsgs'];
     //echo $id;
 		$name = $_SESSION['user'];
 	}
@@ -52,6 +52,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php">LOG OUT</a></li>
+         <!--  <li><a href="users.php">ALL AUTHORS</a></li> -->
+        <li><a href="welcome.php">ALL POSTS</a></li>
         <li><a href="addpost.php">ADD POST</a></li>
         <li><a href="sent.php">SENT MSG</a></li>
         <li><a href="recv.php">RECV MSG</a></li>

@@ -14,7 +14,7 @@
     }
     else {
         $name = $_SESSION['user'];
-        $_SESSION['tomsg'] = $sendname;
+        $_SESSION['tomsgs'] = $sendname;
     }
 ?>
 <!DOCTYPE html>

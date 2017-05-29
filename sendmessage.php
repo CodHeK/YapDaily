@@ -1,7 +1,7 @@
 <?php  
 	session_start();
 	$name = $_SESSION['user'];
-	$sendname = $_SESSION['tomsg'];
+	$sendname = $_SESSION['tomsgs'];
 
 	// echo $name;
 	// echo $sendname;

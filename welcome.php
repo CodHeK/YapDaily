@@ -52,6 +52,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php">LOG OUT</a></li>
+        <!-- <li><a href="users.php">ALL AUTHORS</a></li> -->
         <li><a href="addpost.php">ADD POST</a></li>
         <li><a href="sent.php">SENT MSG</a></li>
         <li><a href="recv.php">RECV MSG</a></li>
@@ -70,6 +71,7 @@
         $password = "";
         $dbname = "pdologin";
         $tbname = "posts";
+        $tbname1 = "comments";
 
         try {
 
@@ -79,10 +81,16 @@
 
             $stmt = $conn->prepare("SELECT * FROM $tbname ORDER BY id DESC");
 
+            $stmt1 = $conn->prepare("SELECT * FROM $tbname1");
+
             $stmt->execute();
+
+            $stmt1->execute();
 
             
             $results = $stmt->fetchAll();
+
+            $results1 = $stmt1->fetchAll();
 
             if($results != NULL) {
                   
@@ -94,6 +102,30 @@
                   echo '<hr style="margin-left:2%;width:93%;border:0.5px solid black;">';
                   echo '<h4 style = "font-family: Source Sans Pro;color: black;margin-left:2%;">By,  <a style="text-decoration:none;" href="message.php?user=' .$rows['user']. '&sendto=' .$rows['name']. '"><b> &nbsp',$rows['name'],'&nbsp</b></a> on  <b>&nbsp',$rows['dater'], '&nbsp</b></h4>', '<br>';
                   echo '<p class="jumbotron" style="font-family: Source Sans Pro;color:black;width:92%;margin-left:2%;font-size:25px;overflow-x:auto;overflow-y:auto;">',$rows['body'],'</p>';
+                  echo '<h4 style="margin-left:2%;"><b>COMMENTS:</b></h4>';
+                  echo '<hr style="margin-left:2%;width:92%;">';
+                  foreach($results1 as $comm) {
+                    if($comm['postid'] == $rows['id']) {
+                      $idd = $comm['postid'];
+                      $stmt2 = $conn->prepare("SELECT * FROM $tbname1 WHERE postid = '$idd' ORDER BY id DESC");
+                      $stmt2->execute();
+
+                      echo '<h4 style="margin-left:2%;"><b>',$comm['name'], ':</b>&nbsp&nbsp' , $comm['comment'], '</h4>';
+                  }
+                  }
+                  echo '<br>';
+                  echo '<form method="POST" action="comments.php?id=' .$rows['id']. '&user=' .$name. '">';
+                  echo '<table  style="margin-left:2%;width:85%;" id="commenttable">';
+                  echo '<tr>';
+                  echo '<td>';
+                  echo '<input class="form-control" type="text" style="margin-left:2%;" name="comment" placeholder="Write a comment...">';
+                  echo '</td>';
+                  echo '<td style="padding-left:2%;">';
+                  echo '<input type="submit" name="postcomment" value"POST" class="btn btn-deafult">';
+                  echo '</td>';
+                  echo '</tr>';
+                  echo '</table>','<br>';
+                  echo '</form>';
                   echo '<a id="heart" href="likes.php?id=' .$rows['id']. '&user=' .$rows['user']. '" style="text-decoration:none;font-size:25px;color:black;margin-left:2.5%;"><i class="fa fa-heart" aria-hidden="true"></i></a>&nbsp&nbsp&nbsp&nbsp<b style="font-size:20px;">', $rows['likes'], '</b><br>';
                   echo '</div>';
                   echo '</div>';
