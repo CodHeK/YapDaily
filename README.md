@@ -1,6 +1,4 @@
-##YapDaily !
-
-### A Blogger Web Application based on PDO php and MySQL 
+### A Blogger Web Application based on PDO php and MySQL - YapDaily!
 ## Things you can do:
 ### 1. Create an account and login.
 ### 2. Add posts.
