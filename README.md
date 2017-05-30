@@ -5,3 +5,4 @@
 ### 3. Edit them, Delete them. (Only your posts).
 ### 4. Like the posts.
 ### 5. Comment on the posts!
+### 6. Send Direct Messages (CHAT) with other authors registered !
