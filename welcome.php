@@ -64,8 +64,119 @@
 <div id="content" class="container">
     <h1>All Posts <b style="font-size:13px;">( Refreshed every minute )</b></h1>
     <hr>
+    <form method="POST">
+    <table style="width: 100%;">
+    <tr>
+    <td style="padding-right: 0.5%;">
+      <i class="fa fa-search" aria-hidden="true" style="color:black;font-size: 20px;"></i>
+    </td>
+    <td style="width:80%;">
+      <input type="text" name="search" class="form-control" placeholder="Search an author..." >
+    </td>
+    <td style="
+      padding-left: 1%;">
+      <input type="submit" name="searchauth" class="btn btn-deafult" value="SEARCH">
+      <input type="submit" name="showall" class="btn btn-deafult" value="ALL POSTS">
+    </td>
+    </tr>
+    </table>
+    </form>
     <br>
     <?php 
+
+      if(isset($_POST['searchauth'])) {
+        $authorname = htmlentities($_POST['search']);
+        
+        if(empty($_POST['search'])) {
+          echo '<script language="javascript">';
+              echo 'alert("Enter Name please !");';
+              echo '</script>';   
+              header("Refresh: 1; url=welcome.php");
+        }
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "pdologin";
+        $tbname = "posts";
+        $tbname1 = "comments";
+
+        try {
+
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $stmt = $conn->prepare("SELECT * FROM $tbname WHERE name = '$authorname' ORDER BY id DESC");
+
+            $stmt1 = $conn->prepare("SELECT * FROM $tbname1");
+
+            $stmt->execute(['name' => $authorname]);
+
+            $stmt1->execute();
+
+            
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            //echo $results['name'];
+
+            $results1 = $stmt1->fetchAll();
+
+            if($results != NULL) {
+                  
+                foreach($results as $rows) {
+                  echo '<br>';
+                  echo '<div class="container">';
+                  echo '<div class="cont" style="border:1px solid black;border-radius:10px;">';
+                  echo '<h3 style="font-family: Source Sans Pro;font-weight: 700;color: black;margin-left:2%;font-size:30px;">', $rows['title'], '</h3>';
+                  echo '<hr style="margin-left:2%;width:93%;border:0.5px solid black;">';
+                  echo '<h4 style = "font-family: Source Sans Pro;color: black;margin-left:2%;">By,  <a style="text-decoration:none;" href="message.php?user=' .$rows['user']. '&sendto=' .$rows['name']. '"><b> &nbsp',$rows['name'],'&nbsp</b></a> on  <b>&nbsp',$rows['dater'], '&nbsp</b></h4>', '<br>';
+                  echo '<p class="jumbotron" style="font-family: Source Sans Pro;color:black;width:92%;margin-left:2%;font-size:25px;overflow-x:auto;overflow-y:auto;">',$rows['body'],'</p>';
+                  echo '<h4 style="margin-left:2%;"><b>COMMENTS:</b></h4>';
+                  echo '<hr style="margin-left:2%;width:92%;">';
+                  foreach($results1 as $comm) {
+                    if($comm['postid'] == $rows['id']) {
+                      $idd = $comm['postid'];
+                      $stmt2 = $conn->prepare("SELECT * FROM $tbname1 WHERE postid = '$idd' ORDER BY id DESC");
+                      $stmt2->execute();
+
+                      echo '<h4 style="margin-left:2%;"><b>',$comm['name'], ':</b>&nbsp&nbsp' , $comm['comment'], '</h4>';
+                  }
+                  }
+                  echo '<br>';
+                  echo '<form method="POST" action="comments.php?id=' .$rows['id']. '&user=' .$name. '">';
+                  echo '<table  style="margin-left:2%;width:85%;" id="commenttable">';
+                  echo '<tr>';
+                  echo '<td>';
+                  echo '<input class="form-control" type="text" style="margin-left:2%;" name="comment" placeholder="Write a comment...">';
+                  echo '</td>';
+                  echo '<td style="padding-left:2%;">';
+                  echo '<input type="submit" name="postcomment" value"POST" class="btn btn-deafult">';
+                  echo '</td>';
+                  echo '</tr>';
+                  echo '</table>','<br>';
+                  echo '</form>';
+                  echo '<a id="heart" href="likes.php?id=' .$rows['id']. '&user=' .$rows['user']. '" style="text-decoration:none;font-size:25px;color:black;margin-left:2.5%;"><i class="fa fa-heart" aria-hidden="true"></i></a>&nbsp&nbsp&nbsp&nbsp<b style="font-size:20px;">', $rows['likes'], '</b><br>';
+                  echo '</div>';
+                  echo '</div>';
+                  echo '<br>';
+               }
+            }
+            else {
+              echo '<br>';
+              echo '<h3 style="font-weight:700;font-family:Source Sans Pro;text-align:center;">We could not find this Author !</h3>';
+            }
+        }
+        catch(PDOException $e){
+              echo '<script language="javascript">';
+              echo '$sql . "<br>" . $e->getMessage();';
+              echo '</script>';   
+              header("Refresh: 1; url=login.php");
+        }
+
+        $conn = null;
+      }
+      else {
+
         $servername = "localhost";
         $username = "root";
         $password = "";
@@ -145,6 +256,7 @@
         }
 
         $conn = null;
+      }
 
     ?>
 </div>

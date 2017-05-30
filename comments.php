@@ -16,7 +16,7 @@
 	else {
 		if(!empty($_POST['comment'])) {
 			$comment = htmlentities($_POST['comment']);
-			echo $comment;
+			//echo $comment;
 		}
 
 
