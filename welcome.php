@@ -28,9 +28,23 @@
     body {
       font-family: 'Source Sans Pro', sans-serif;
       font-weight: 700;
+      background-color: rgb(220, 198, 224);
     }
     .cont {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+      background-color: rgb(238, 238, 238);
+      font-weight: 700;
+    }
+    .navbar {
+      background-color: rgb(103, 65, 114)
+    }
+    hr {
+        border: 1px solid black;
+    }
+    #sub {
+      color: white;
+      font-weight: 700;
+      background-color: rgb(103, 65, 114);
     }
   </style>
 </head>
@@ -45,24 +59,24 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">PDOphp</a>
+      <a class="navbar-brand" href="#" style="color: white;margin-left: 7%;font-weight: 700;">PDOphp</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="logout.php">LOG OUT</a></li>
+        <li><a href="logout.php"  style="color: white;font-weight: 700;">LOG OUT</a></li>
         <!-- <li><a href="users.php">ALL AUTHORS</a></li> -->
-        <li><a href="addpost.php">ADD POST</a></li>
-        <li><a href="sent.php">SENT MSG</a></li>
-        <li><a href="recv.php">RECV MSG</a></li>
-        <li style="color: black;font-weight: 700;border: 1px solid black;"><a href="profile.php"><?php echo $name ?></a></li>
+        <li><a href="addpost.php"  style="color: white;font-weight: 700;">ADD POST</a></li>
+        <li><a href="sent.php"  style="color: white;font-weight: 700;">SENT MSG</a></li>
+        <li><a href="recv.php"  style="color: white;font-weight: 700;">RECV MSG</a></li>
+        <li style="color: white;font-weight: 700;border: 1px solid black;background-color: black;"><a href="profile.php" style="color: white;font-weight: 700;"><?php echo $name ?></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 <div id="content" class="container">
-    <h1>All Posts <b style="font-size:13px;">( Refreshed every minute )</b></h1>
+    <h1 style="color: rgb(103, 65, 114)">All Posts <b style="font-size:13px;">( Refreshed every minute )</b></h1>
     <hr>
     <form method="POST">
     <table style="width: 100%;">
@@ -75,8 +89,8 @@
     </td>
     <td style="
       padding-left: 1%;">
-      <input type="submit" name="searchauth" class="btn btn-deafult" value="SEARCH">
-      <input type="submit" name="showall" class="btn btn-deafult" value="ALL POSTS">
+      <input type="submit" name="searchauth" class="btn btn-deafult" value="SEARCH"  style="background-color: rgb(103, 65, 114);color: #fff;font-weight: 700;">
+      <input type="submit" name="showall" class="btn btn-deafult" value="ALL POSTS" style="background-color: rgb(103, 65, 114);color: #fff;font-weight: 700;">
     </td>
     </tr>
     </table>
@@ -150,7 +164,7 @@
                   echo '<input class="form-control" type="text" style="margin-left:2%;" name="comment" placeholder="Write a comment...">';
                   echo '</td>';
                   echo '<td style="padding-left:2%;">';
-                  echo '<input type="submit" name="postcomment" value"POST" class="btn btn-deafult">';
+                  echo '<input type="submit" name="postcomment" value"POST" id="sub" class="btn btn-deafult" style="background-color: rgb(103, 65, 114);color: #fff;font-weight: 700;">';
                   echo '</td>';
                   echo '</tr>';
                   echo '</table>','<br>';
@@ -212,7 +226,7 @@
                   echo '<h3 style="font-family: Source Sans Pro;font-weight: 700;color: black;margin-left:2%;font-size:30px;">', $rows['title'], '</h3>';
                   echo '<hr style="margin-left:2%;width:93%;border:0.5px solid black;">';
                   echo '<h4 style = "font-family: Source Sans Pro;color: black;margin-left:2%;">By,  <a style="text-decoration:none;" href="message.php?user=' .$rows['user']. '&sendto=' .$rows['name']. '"><b> &nbsp',$rows['name'],'&nbsp</b></a> on  <b>&nbsp',$rows['dater'], '&nbsp</b></h4>', '<br>';
-                  echo '<p class="jumbotron" style="font-family: Source Sans Pro;color:black;width:92%;margin-left:2%;font-size:25px;overflow-x:auto;overflow-y:auto;">',$rows['body'],'</p>';
+                  echo '<p class="jumbotron" style="font-family: Source Sans Pro;color:black;width:92%;margin-left:2%;font-size:25px;overflow-x:auto;overflow-y:auto;border:0.5px solid black;">',$rows['body'],'</p>';
                   echo '<h4 style="margin-left:2%;"><b>COMMENTS:</b></h4>';
                   echo '<hr style="margin-left:2%;width:92%;">';
                   foreach($results1 as $comm) {
@@ -232,7 +246,7 @@
                   echo '<input class="form-control" type="text" style="margin-left:2%;" name="comment" placeholder="Write a comment...">';
                   echo '</td>';
                   echo '<td style="padding-left:2%;">';
-                  echo '<input type="submit" name="postcomment" value"POST" class="btn btn-deafult">';
+                  echo '<input type="submit" name="postcomment" value"POST" class="btn btn-deafult" style="background-color: rgb(103, 65, 114);color: #fff;font-weight: 700;">';
                   echo '</td>';
                   echo '</tr>';
                   echo '</table>','<br>';

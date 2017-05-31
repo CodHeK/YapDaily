@@ -61,7 +61,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Welcome</title>
+	<title>Post Delete</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="refresh" content="60" > 
@@ -71,9 +71,10 @@
     body {
       font-family: 'Source Sans Pro', sans-serif;
       font-weight: 700;
+      background-color: rgb(220, 198, 224);
     }
-    .cont {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    .navbar {
+      background-color: rgb(103, 65, 114);
     }
   </style>
 </head>
@@ -88,15 +89,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">PDOphp</a>
+      <a class="navbar-brand" href="#" style="color: white;margin-left: 7%;font-weight: 700;">PDOphp</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="logout.php">LOG OUT</a></li>
-        <li><a href="addpost.php">ADD POST</a></li>
-        <li style="color: black;font-weight: 700;border: 1px solid black;"><a href="profile.php"><?php echo $name ?></a></li>
+        <li><a href="logout.php" style="color: white;font-weight: 700;">LOG OUT</a></li>
+        <li><a href="addpost.php" style="color: white;font-weight: 700;">ADD POST</a></li>
+        <li style="color: black;font-weight: 700;border: 1px solid black;background-color: black;"><a href="profile.php" style="color: white;font-weight: 700;"><?php echo $name ?></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -106,7 +107,7 @@
 <div id="overlay" style="margin: 0 auto;text-align: center;padding-top: 5%;">
 	<h2>Confirm delete ?</h2><br>
 	<a href="profile.php" class="btn btn-default" role="button">NO</a>&nbsp&nbsp
-    <button type="submit" class="btn btn-primary" name="yes">YES</button>
+    <button type="submit" class="btn btn-primary" name="yes" style="background-color: rgb(103, 65, 114);">YES</button>
 </div>
 </form>
 </body>

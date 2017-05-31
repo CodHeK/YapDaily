@@ -17,6 +17,10 @@
     body {
       font-family: 'Source Sans Pro', sans-serif;
       font-weight: 700;
+      background-color: rgb(220, 198, 224);
+    }
+    .navbar {
+      background-color: rgb(103, 65, 114);
     }
   </style>
 </head>
@@ -31,27 +35,27 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">PDOphp</a>
+      <a class="navbar-brand" href="#" style="color: white;margin-left: 7%;font-weight: 700;">PDOphp</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="login.php">LOG IN</a></li>
-        <li><a href="index.php">SIGN UP</a></li>
+        <li><a href="login.php" style="color: white;font-weight: 700;">LOG IN</a></li>
+        <li><a href="index.php" style="color: white;font-weight: 700;">SIGN UP</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
 <div id="content" style="margin: 0 auto;text-align: center;">
-    <h1>LOG IN</h1>
+    <h1 style="color: rgb(103, 65, 114)">LOG IN</h1>
     <br>
     <form method="POST" action="logincheck.php">
-    <div class="form-group col-md-6" style="margin-left: 27%;">
+    <div class="form-group col-md-6" style="margin-left: 25%;">
       <input type="text" name="name" placeholder="Enter Username" class="form-control"><br>
       <input type="password" name="password" placeholder="Enter Password" class="form-control"><br>
-      <input type="submit" class="btn btn-defaut" name="login" value="LOG IN">
+      <input type="submit" class="btn btn-defaut" name="login" value="LOG IN" style="background-color: rgb(103, 65, 114);color: #fff;font-weight: 700;">
     </div>
     </form>
 </div>
