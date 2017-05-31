@@ -47,16 +47,18 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<div id="content" style="margin: 0 auto;text-align: center;">
+<div id="content" style="margin: 0 auto;text-align: center;padding-top: 3%;">
     <h1 style="text-align: center;color: rgb(103, 65, 114);">SIGN UP</h1>
     <br>
     <form method="POST" action="dosignup.php">
-    <div class="form-group col-md-6" style="margin-left: 25%;">
+    <div class="col-md-4"></div>
+    <div class="form-group col-md-4" style="margin-left: 25%;">
       <input type="text" name="name" placeholder="Enter Username" class="form-control"><br>
       <input type="email" name="email" placeholder="Enter Email" class="form-control"><br>
       <input type="password" name="password" placeholder="Enter Password" class="form-control"><br>
       <input type="submit" class="btn btn-defaut" name="signup" value="SIGN UP" style="background-color: rgb(103, 65, 114);color: #fff;font-weight: 700;">
     </div>
+    <div class="col-md-4"></div>
     </form>
 </div>
 </body>

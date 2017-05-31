@@ -73,6 +73,7 @@
   <meta http-equiv="refresh" content="60" > 
   <link href="https://fonts.googleapis.com/css?family=Changa:200|Source+Sans+Pro:200" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Barrio|Permanent+Marker" rel="stylesheet">
   <style type="text/css">
     body {
       font-family: 'Source Sans Pro', sans-serif;
@@ -95,7 +96,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#" style="color: white;margin-left: 7%;font-weight: 700;">PDOphp</a>
+      <a class="navbar-brand" href="#" style="color: white;margin-left: 7%;font-weight: 700;font-family: Permanent Marker;font-size: 23px;">yapdaily</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
